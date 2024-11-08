@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <AssemblyName>KrnlUI</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>True</UseWPF>
+    <TargetFramework>net481</TargetFramework>
+    <Prefer32Bit>True</Prefer32Bit>
+    <Platforms>AnyCPU;x86;x64</Platforms>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>11.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="fonts\roboto-medium.ttf" />
+    <None Remove="png.png" />
+    <None Remove="images\iconl.png" />
+    <None Remove="image2.png" />
+    <None Remove="image3.png" />
+    <None Remove="image1.png" />
+    <None Remove="applogo.ico" />
+    <None Remove="images\icon1x.png" />
+    <None Remove="images\icon32x.png" />
+    <None Remove="fonts\roboto-regular.ttf" />
+    <None Remove="fonts\inter-regular.ttf" />
+    <EmbeddedResource Include="fonts\roboto-medium.ttf" LogicalName="fonts/roboto-medium.ttf" />
+    <EmbeddedResource Include="png.png" LogicalName="png.png" />
+    <EmbeddedResource Include="images\iconl.png" LogicalName="images/iconl.png" />
+    <EmbeddedResource Include="image2.png" LogicalName="image2.png" />
+    <EmbeddedResource Include="image3.png" LogicalName="image3.png" />
+    <EmbeddedResource Include="image1.png" LogicalName="image1.png" />
+    <EmbeddedResource Include="applogo.ico" LogicalName="applogo.ico" />
+    <EmbeddedResource Include="images\icon1x.png" LogicalName="images/icon1x.png" />
+    <EmbeddedResource Include="images\icon32x.png" LogicalName="images/icon32x.png" />
+    <EmbeddedResource Include="fonts\roboto-regular.ttf" LogicalName="fonts/roboto-regular.ttf" />
+    <EmbeddedResource Include="fonts\inter-regular.ttf" LogicalName="fonts/inter-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CefSharp.Common" Version="129.0.110" />
+    <PackageReference Include="CefSharp.Wpf" Version="129.0.110" />
+    <PackageReference Include="FCTB" Version="2.16.21" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SeliwareAPI">
+      <HintPath>G:\BoomSploit\SeliwareAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="CefSharp.Wpf" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="CefSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="CefSharp.Core" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserControl x:Class="KrnlUI.Controls.ExplorerEntry" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:KrnlUI.Controls" Width="208" Height="165" HorizontalAlignment="Center" VerticalAlignment="Center" Focusable="True" MouseDown="UserControl_MouseLeftButtonUp">
+  <FrameworkElement.Triggers>
+    <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+      <BeginStoryboard>
+        <Storyboard Name="CardBorderDownSB" TargetProperty="BorderBrush.Color">
+          <ColorAnimation Name="CardBorderDown" Duration="0:0:0.1" Storyboard.TargetName="CardBorder" To="#FF18A0FB" />
+        </Storyboard>
+      </BeginStoryboard>
+    </EventTrigger>
+    <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+      <BeginStoryboard>
+        <Storyboard Name="CardBorderUpSB" TargetProperty="BorderBrush.Color">
+          <ColorAnimation Name="CardBorderUp" Duration="0:0:0.1" Storyboard.TargetName="CardBorder" To="#11FFFFFF" />
+        </Storyboard>
+      </BeginStoryboard>
+    </EventTrigger>
+  </FrameworkElement.Triggers>
+  <Grid Background="#FF222222">
+    <Border Name="CardBorder" BorderBrush="#11FFFFFF" BorderThickness="1" Height="165" Width="208" Background="#FF222222" CornerRadius="4">
+      <Grid Margin="0,6,0,-1">
+        <Border Name="BorderBack" BorderThickness="1" HorizontalAlignment="Left" Height="121" VerticalAlignment="Top" Width="208" CornerRadius="4" Background="#FF18A0FB" Margin="-1,-7,-1,0" Focusable="True">
+          <Grid>
+            <Canvas Name="LuaIcon2" Width="48" Height="48">
+              <UIElement.RenderTransform>
+                <TranslateTransform X="0" Y="0" />
+              </UIElement.RenderTransform>
+              <FrameworkElement.Resources>
+                <ResourceDictionary />
+              </FrameworkElement.Resources>
+              <Ellipse xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="circle24" Canvas.Left="13.5" Canvas.Top="13.5" Width="21" Height="21" Stroke="#FFFFFFFF" />
+              <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path26" Fill="#FFFFFFFF">
+                <Path.Data>
+                  <PathGeometry Figures="M24 31C27.866 31 31 27.866 31 24C31 20.134 27.866 17 24 17C20.134 17 17 20.134 17 24C17 27.866 20.134 31 24 31ZM26.5 24C27.8807 24 29 22.8807 29 21.5C29 20.1193 27.8807 19 26.5 19C25.1193 19 24 20.1193 24 21.5C24 22.8807 25.1193 24 26.5 24Z" FillRule="EvenOdd" />
+                </Path.Data>
+              </Path>
+              <Ellipse xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="circle28" Canvas.Left="29" Canvas.Top="14" Width="5" Height="5" Fill="#FFFFFFFF" />
+            </Canvas>
+            <Canvas Name="FolderIcon2" Width="22" Height="22" Visibility="Hidden">
+              <UIElement.RenderTransform>
+                <TranslateTransform X="0" Y="0" />
+              </UIElement.RenderTransform>
+              <Canvas Name="g1">
+                <UIElement.RenderTransform>
+                  <TranslateTransform X="1.9445566" Y="4.8152287" />
+                </UIElement.RenderTransform>
+                <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="rect1" Canvas.Left="0" Canvas.Top="0" Width="18" Height="14" Fill="#FF3E3E3E" />
+              </Canvas>
+              <Canvas Name="g2">
+                <UIElement.RenderTransform>
+                  <TranslateTransform X="1.9445566" Y="2.8152287" />
+                </UIElement.RenderTransform>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1" Fill="#FF3E3E3E">
+                  <Path.Data>
+                    <PathGeometry Figures="m 0 0 h 8 l 2 2 H 8 0 Z" FillRule="NonZero" />
+                  </Path.Data>
+                </Path>
+              </Canvas>
+            </Canvas>
+          </Grid>
+        </Border>
+        <Grid HorizontalAlignment="Left" Height="44" Margin="0,110,0,0" VerticalAlignment="Top" Width="206" Background="#FF222222" Focusable="True">
+          <Canvas Name="FolderIcon" Width="22" Height="22" Margin="13,14,171,8" Visibility="Hidden">
+            <UIElement.RenderTransform>
+              <TranslateTransform X="0" Y="0" />
+            </UIElement.RenderTransform>
+            <Canvas Name="g177">
+              <UIElement.RenderTransform>
+                <TranslateTransform X="1.9445566" Y="4.8152287" />
+              </UIElement.RenderTransform>
+              <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="rect166" Canvas.Left="0" Canvas.Top="0" Width="18" Height="14" Fill="#FF3E3E3E" />
+            </Canvas>
+            <Canvas Name="g210">
+              <UIElement.RenderTransform>
+                <TranslateTransform X="1.9445566" Y="2.8152287" />
+              </UIElement.RenderTransform>
+              <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path199" Fill="#FF3E3E3E">
+                <Path.Data>
+                  <PathGeometry Figures="m 0 0 h 8 l 2 2 H 8 0 Z" FillRule="NonZero" />
+                </Path.Data>
+              </Path>
+            </Canvas>
+          </Canvas>
+          <Label Name="EntryName" Content="Test.lua" HorizontalAlignment="Left" Margin="50,6,0,0" VerticalAlignment="Top" FontFamily="/KrnlUI;component/Fonts/#Inter" FontSize="11" Foreground="#FFD5D5D5" Padding="0,5,5,5" Width="146" />
+          <Label Name="EntryEditstamp" Content="Edited 2 months ago" HorizontalAlignment="Left" Margin="50,23,0,0" VerticalAlignment="Top" FontFamily="/KrnlUI;component/Fonts/#Inter" FontSize="9" Foreground="#FF7D7D7D" Padding="0,5,5,5" />
+          <Canvas Name="LuaIcon" Width="48" Height="48" Margin="-1,0,159,-4">
+            <UIElement.RenderTransform>
+              <TranslateTransform X="0" Y="0" />
+            </UIElement.RenderTransform>
+            <Ellipse xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="circle1" Canvas.Left="13.5" Canvas.Top="13.5" Width="21" Height="21" Stroke="#18A0FB" />
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path2" Fill="#18A0FB" Height="13.605" Stretch="Fill" Width="14.293" Canvas.Left="17" Canvas.Top="17.197">
+              <Path.Data>
+                <PathGeometry Figures="M24 31C27.866 31 31 27.866 31 24C31 20.134 27.866 17 24 17C20.134 17 17 20.134 17 24C17 27.866 20.134 31 24 31ZM26.5 24C27.8807 24 29 22.8807 29 21.5C29 20.1193 27.8807 19 26.5 19C25.1193 19 24 20.1193 24 21.5C24 22.8807 25.1193 24 26.5 24Z" FillRule="EvenOdd" />
+              </Path.Data>
+            </Path>
+            <Ellipse xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="circle2" Canvas.Left="29" Canvas.Top="14" Width="5" Height="5" Fill="#18A0FB" />
+          </Canvas>
+          <TextBox Name="EntryEdit" HorizontalAlignment="Left" Height="15" Margin="48,11,0,0" Text="TextBox" VerticalAlignment="Top" Width="148" Background="#FF1F1F1F" Foreground="#FFD5D5D5" FontFamily="/KrnlUI;component/Fonts/#Inter" FontSize="11" BorderThickness="0" CaretBrush="#FFA8A8A8" Visibility="Hidden" BorderBrush="{x:Null}" LostFocus="EntryEdit_LostFocus" />
+        </Grid>
+      </Grid>
+    </Border>
+  </Grid>
+</UserControl>

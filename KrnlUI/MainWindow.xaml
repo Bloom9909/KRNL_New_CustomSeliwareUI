@@ -1,0 +1,1629 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Window x:Class="KrnlUI.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:KrnlUI" xmlns:Controls="clr-namespace:KrnlUI.Controls" AllowsTransparency="True" Title="MainWindow" Height="400" Width="700" MinHeight="400" MinWidth="700" WindowStyle="None" Background="#00FFFFFF"  BorderThickness="0" RenderOptions.BitmapScalingMode="HighQuality" WindowStartupLocation="CenterScreen" SizeChanged="Window_SizeChanged" DpiChanged="Window_DpiChanged" MouseDown="KrnlWindow_MouseDown" Closing="Window_Closing" Closed="Window_Closed">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="5" />
+    </WindowChrome.WindowChrome>
+    <Grid Name="Workspace" Focusable="True" FocusVisualStyle="{x:Null}" MouseDown="Workspace_MouseDown">
+
+        <Border Name="KrnlWindow" Background="#FF222222">
+            <Grid Name="Workspace1">
+                <StackPanel Name="TabContainer" Height="38" VerticalAlignment="Top" Background="#FF222222" Margin="40,0,152,0" AllowDrop="True" MouseLeftButtonDown="MovableForm_MouseDown" Drop="TabContainer_Drop" />
+                <StackPanel Margin="42,0,170,0" Height="38" VerticalAlignment="Top">
+                    <ScrollViewer Name="MyScrollViewer" Height="38" VerticalAlignment="Top" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Left" Focusable="False" PreviewMouseWheel="MyScrollViewer_PreviewMouseWheel">
+                        <StackPanel HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,0,0,0">
+                            <StackPanel Name="TabFlow" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,0,0,0">
+                                <Grid Name="NewTabButton" Width="32" Background="#FF222222" MouseLeftButtonUp="NewTabButton_MouseLeftButtonUp">
+                                    <FrameworkElement.Triggers>
+                                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                            <BeginStoryboard>
+                                                <Storyboard TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="path452" To="#d5d5d5" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                            <BeginStoryboard>
+                                                <Storyboard TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="path452" To="#7a7a7a" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </FrameworkElement.Triggers>
+                                    <Canvas Name="svg454" Width="24" Height="24" Margin="4.5,7.5,3,6">
+                                        <UIElement.RenderTransform>
+                                            <TranslateTransform X="0" Y="0" />
+                                        </UIElement.RenderTransform>
+                                        <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path452" Stroke="#7a7a7a">
+                                            <Path.Data>
+                                                <PathGeometry Figures="M11.5 7V11.5M11.5 11.5V16M11.5 11.5H16M11.5 11.5H7" FillRule="NonZero" />
+                                            </Path.Data>
+                                        </Path>
+                                    </Canvas>
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
+                <StackPanel Name="MinimizeButton" HorizontalAlignment="Right" Height="38" Margin="0,0,100,0" VerticalAlignment="Top" Width="50" Background="#FF222222" MouseLeftButtonUp="MinimizeButton_MouseLeftButtonUp">
+                    <FrameworkElement.Triggers>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="path374" To="#FFFFFFFF" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="Background.Color">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="MinimizeButton" To="#393939" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="path374" To="#FF7A7A7A" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="Background.Color">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="MinimizeButton" To="#222222" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="Background.Color">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="MinimizeButton" To="#4a4a4a" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="Background.Color">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="MinimizeButton" To="#393939" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </FrameworkElement.Triggers>
+                    <Canvas Name="svg376" Width="24" Height="24" Margin="13,7,13,0">
+                        <UIElement.RenderTransform>
+                            <TranslateTransform X="0" Y="0" />
+                        </UIElement.RenderTransform>
+                        <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path374" Fill="#FF7A7A7A">
+                            <Path.Data>
+                                <PathGeometry Figures="M17 12H7V11H17V12Z" FillRule="EvenOdd" />
+                            </Path.Data>
+                        </Path>
+                    </Canvas>
+                </StackPanel>
+                <StackPanel Name="MaximizeButton" HorizontalAlignment="Right" Height="38" Margin="0,0,50,0" VerticalAlignment="Top" Width="50" Background="#FF222222" MouseLeftButtonUp="MaximizeButton_MouseLeftButtonUp">
+                    <FrameworkElement.Triggers>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="rect354" To="#FFFFFFFF" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="path202" To="#FFFFFFFF" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="Background.Color">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="MaximizeButton" To="#393939" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="rect354" To="#FF7A7A7A" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="path202" To="#FF7A7A7A" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="Background.Color">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="MaximizeButton" To="#222222" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="Background.Color">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="MaximizeButton" To="#4a4a4a" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="Background.Color">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="MaximizeButton" To="#393939" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </FrameworkElement.Triggers>
+                    <Canvas Name="svg356" Width="24" Height="24" Margin="13,7,13,0">
+                        <UIElement.RenderTransform>
+                            <TranslateTransform X="0" Y="0" />
+                        </UIElement.RenderTransform>
+                        <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="rect354" Canvas.Left="7" Canvas.Top="7" Width="10" Height="10" Stroke="#FF7A7A7A" />
+                    </Canvas>
+                    <Canvas Name="svg223" Width="12" Height="12" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-24,0,0" Visibility="Hidden">
+                        <UIElement.RenderTransform>
+                            <TranslateTransform X="0" Y="0" />
+                        </UIElement.RenderTransform>
+                        <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path202" Fill="#FF7A7A7A">
+                            <Path.Data>
+                                <PathGeometry Figures="M11 1H3V2H9H10V3V9H11V1ZM10 10H11H12V9V1V0H11H3H2V1V2H1H0V3V11V12H1H9H10V11V10ZM9 10V9V3H3H2H1V11H9V10Z" FillRule="EvenOdd" />
+                            </Path.Data>
+                        </Path>
+                    </Canvas>
+                </StackPanel>
+                <StackPanel Name="ExitButton" HorizontalAlignment="Right" Height="38" Margin="650,0,0,0" VerticalAlignment="Top" Width="50" Background="#FF222222" MouseLeftButtonUp="ExitButton_MouseLeftButtonUp">
+                    <FrameworkElement.Triggers>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="path274" To="#FFFFFFFF" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="Background.Color">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="ExitButton" To="#e71022" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="path274" To="#FF7A7A7A" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="Background.Color">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="ExitButton" To="#222222" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="Background.Color">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="ExitButton" To="#c2101d" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="Background.Color">
+                                    <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="ExitButton" To="#e71022" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </FrameworkElement.Triggers>
+                    <Canvas Name="svg276" Width="24" Height="24" Margin="13,7,13,0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <UIElement.RenderTransform>
+                            <TranslateTransform X="0" Y="0" />
+                        </UIElement.RenderTransform>
+                        <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path274" Stroke="#FF7A7A7A">
+                            <Path.Data>
+                                <PathGeometry Figures="M17 7L7 17M7 7L17 17" FillRule="NonZero" />
+                            </Path.Data>
+                        </Path>
+                    </Canvas>
+                </StackPanel>
+                <Grid Name="appIcon" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="40" Background="#FF222222" MouseLeftButtonUp="appIcon_MouseLeftButtonUp" MouseEnter="appIcon_MouseEnter" MouseLeave="appIcon_MouseLeave" MouseLeftButtonDown="appIcon_MouseLeftButtonDown">
+                    <FrameworkElement.Triggers>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard Name="appIconAnimEnterIconSB" TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                    <ColorAnimation Name="appIconAnimEnterIcon" Duration="0:0:0.1" Storyboard.TargetName="path2" To="#FFFFFFFF" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard Name="appIconAnimEnterBackSB" TargetProperty="Background.Color">
+                                    <ColorAnimation Name="appIconAnimEnterBack" Duration="0:0:0.1" Storyboard.TargetName="appIcon" To="#272727" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard Name="appIconAnimLeaveIconSB" TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                    <ColorAnimation Name="appIconAnimLeaveIcon" Duration="0:0:0.1" Storyboard.TargetName="path2" To="#FF7A7A7A" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard Name="appIconAnimLeaveBackSB" TargetProperty="Background.Color">
+                                    <ColorAnimation Name="appIconAnimLeaveBack" Duration="0:0:0.1" Storyboard.TargetName="appIcon" To="#222222" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                            <BeginStoryboard>
+                                <Storyboard Name="appIconAnimDownSB" TargetProperty="Background.Color">
+                                    <ColorAnimation Name="appIconAnimDown" Duration="0:0:0.1" Storyboard.TargetName="appIcon" To="#18A0FB" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                            <BeginStoryboard>
+                                <Storyboard Name="appIconAnimUpSB" TargetProperty="Background.Color">
+                                    <ColorAnimation Name="appIconAnimUp" Duration="0:0:0.1" Storyboard.TargetName="appIcon" To="#272727" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </FrameworkElement.Triggers>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path2" Fill="#FF7A7A7A" Margin="11,10,11,11" Stretch="Fill" Height="14" Width="12">
+                        <Path.Data>
+                            <PathGeometry Figures="M0 5L6 0L12 5V14H8V9H4V14H0V5Z" FillRule="EvenOdd" />
+                        </Path.Data>
+                    </Path>
+                </Grid>
+                <Grid Name="Editor" Margin="10,86,0,0" Background="#FF222222" AllowDrop="True" Drop="Editor_Drop" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="0*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                <Grid Name="LoadBar" HorizontalAlignment="Left" Height="3" Margin="0,397,0,0" VerticalAlignment="Top" Width="700" Background="#00000000" Visibility="Hidden">
+                    <FrameworkElement.Triggers>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard Name="LoaderAnimStoryboard" TargetProperty="Background.Color">
+                                    <ColorAnimation Name="LoaderAnim" Duration="0:0:0.2" DecelerationRatio="1" Storyboard.TargetName="LoadBar" To="#ff000000" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </FrameworkElement.Triggers>
+                </Grid>
+                <Grid Name="HBOpts" HorizontalAlignment="Left" Height="174" Margin="8,86,0,0" VerticalAlignment="Top" Width="200" Visibility="Hidden" LostFocus="HBOpts_LostFocus">
+                    <Canvas Name="svg233" Width="12" Height="6" Margin="12,0,179,168">
+                        <UIElement.RenderTransform>
+                            <TranslateTransform X="0" Y="0" />
+                        </UIElement.RenderTransform>
+                        <FrameworkElement.Resources>
+                            <ResourceDictionary />
+                        </FrameworkElement.Resources>
+                        <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path212" Fill="#FF1A1A1A">
+                            <Path.Data>
+                                <PathGeometry Figures="M6 0L12 6H0L6 0Z" FillRule="NonZero" />
+                            </Path.Data>
+                        </Path>
+                    </Canvas>
+                    <Border HorizontalAlignment="Left" Height="170" Margin="0,6,0,-2" VerticalAlignment="Top" Width="200" CornerRadius="4" Background="#FF1A1A1A" BorderBrush="#FF000000" BorderThickness="1">
+                        <StackPanel Width="200">
+                            <Grid Name="PrefHBOpt" Height="24" Margin="0,8" Background="#FF1A1A1A" MouseEnter="PrefHBOpt_MouseEnter" MouseLeave="PrefHBOpt_MouseLeave">
+                                <FrameworkElement.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="PrefHBOpt" To="#18A0FB" />
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="PrefHBOptGate" To="#18A0FB" />
+                                                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle9" To="#FFFFFF" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="PrefHBOpt" To="#FF1A1A1A" />
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="PrefHBOptGate" To="#FF1A1A1A" />
+                                                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle9" To="#D5D5D5" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </FrameworkElement.Triggers>
+                                <Label Name="TabTitle9" Content="Preferences" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="164" FontWeight="Medium" Background="{x:Null}" />
+                                <Canvas Name="svg321_Copy5" Width="12" Height="12" Margin="170,6,18,6">
+                                    <UIElement.RenderTransform>
+                                        <TranslateTransform X="0" Y="0" />
+                                    </UIElement.RenderTransform>
+                                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path9" Fill="#ffffff">
+                                        <Path.Data>
+                                            <PathGeometry Figures="M9 6L3 10L3 2L9 6Z" FillRule="NonZero" />
+                                        </Path.Data>
+                                    </Path>
+                                </Canvas>
+                                <Grid Name="PrefHBOptGate" HorizontalAlignment="Left" Height="24" Margin="194,0,0,0" VerticalAlignment="Top" Width="6" Background="#FF1A1A1A" MouseEnter="PrefHBOptGate_MouseEnter" />
+                            </Grid>
+                            <Separator Height="1" Margin="12,0" Background="#FF363636" Width="176" />
+                            <Grid Name="FileHBOpt" Height="24" Margin="0,8,0,0" Background="#FF1A1A1A" MouseEnter="FileHBOpt_MouseEnter" MouseLeave="FileHBOpt_MouseLeave">
+                                <FrameworkElement.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="FileHBOpt" To="#18A0FB" />
+                                                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle6" To="#FFFFFF" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard TargetProperty="Background.Color">
+                                                <ColorAnimation Duration="0:0:0" Storyboard.TargetName="FileHBOptsGate" To="#18A0FB" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="FileHBOpt" To="#FF1A1A1A" />
+                                                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle6" To="#D5D5D5" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard TargetProperty="Background.Color">
+                                                <ColorAnimation Duration="0:0:0" Storyboard.TargetName="FileHBOptsGate" To="#FF1A1A1A" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </FrameworkElement.Triggers>
+                                <Label Name="TabTitle6" Content="File" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="133" FontWeight="Medium" Background="{x:Null}" />
+                                <Canvas Name="svg2" Width="12" Height="12" Margin="170,6,18,6">
+                                    <UIElement.RenderTransform>
+                                        <TranslateTransform X="0" Y="0" />
+                                    </UIElement.RenderTransform>
+                                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path6" Fill="#ffffff">
+                                        <Path.Data>
+                                            <PathGeometry Figures="M9 6L3 10L3 2L9 6Z" FillRule="NonZero" />
+                                        </Path.Data>
+                                    </Path>
+                                </Canvas>
+                                <Grid Name="FileHBOptsGate" HorizontalAlignment="Left" Height="24" Margin="194,0,0,0" VerticalAlignment="Top" Width="6" Background="#FF1A1A1A" MouseEnter="FileHBOptsGate_MouseEnter">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="7*" />
+                                        <RowDefinition Height="5*" />
+                                    </Grid.RowDefinitions>
+                                </Grid>
+                            </Grid>
+                            <Grid Name="EditHBOpt" Height="24" Margin="0" Background="#FF1A1A1A" MouseEnter="EditHBOpt_MouseEnter" MouseLeave="EditHBOpt_MouseLeave">
+                                <FrameworkElement.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="EditHBOpt" To="#18A0FB" />
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="EditHBOptGate" To="#18A0FB" />
+                                                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle7" To="#FFFFFF" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="EditHBOpt" To="#FF1A1A1A" />
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="EditHBOptGate" To="#FF1A1A1A" />
+                                                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle7" To="#D5D5D5" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </FrameworkElement.Triggers>
+                                <Label Name="TabTitle7" Content="Edit" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="133" FontWeight="Medium" Background="{x:Null}" />
+                                <Canvas Name="svg321_Copy3" Width="12" Height="12" Margin="170,6,18,6">
+                                    <UIElement.RenderTransform>
+                                        <TranslateTransform X="0" Y="0" />
+                                    </UIElement.RenderTransform>
+                                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path7" Fill="#ffffff">
+                                        <Path.Data>
+                                            <PathGeometry Figures="M9 6L3 10L3 2L9 6Z" FillRule="NonZero" />
+                                        </Path.Data>
+                                    </Path>
+                                </Canvas>
+                                <Grid Name="EditHBOptGate" HorizontalAlignment="Left" Height="24" Margin="194,0,0,0" VerticalAlignment="Top" Width="6" Background="#FF1A1A1A" MouseEnter="EditHBOptGate_MouseEnter" />
+                            </Grid>
+                            <Grid Name="ViewHBOpt" Height="24" Margin="0,0,0,8" Background="#FF1A1A1A" MouseEnter="ViewHBOpt_MouseEnter" MouseLeave="ViewHBOpt_MouseLeave">
+                                <FrameworkElement.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="ViewHBOpt" To="#18A0FB" />
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="ViewHBOptGate" To="#18A0FB" />
+                                                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle8" To="#FFFFFF" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="ViewHBOpt" To="#FF1A1A1A" />
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="ViewHBOptGate" To="#FF1A1A1A" />
+                                                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle8" To="#D5D5D5" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </FrameworkElement.Triggers>
+                                <Label Name="TabTitle8" Content="View" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="133" FontWeight="Medium" Background="{x:Null}" />
+                                <Canvas Name="svg321_Copy4" Width="12" Height="12" Margin="170,6,18,6">
+                                    <UIElement.RenderTransform>
+                                        <TranslateTransform X="0" Y="0" />
+                                    </UIElement.RenderTransform>
+                                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path8" Fill="#ffffff">
+                                        <Path.Data>
+                                            <PathGeometry Figures="M9 6L3 10L3 2L9 6Z" FillRule="NonZero" />
+                                        </Path.Data>
+                                    </Path>
+                                </Canvas>
+                                <Grid Name="ViewHBOptGate" HorizontalAlignment="Left" Height="24" Margin="194,0,0,0" VerticalAlignment="Top" Width="6" Background="#FF1A1A1A" MouseEnter="ViewHBOptGate_MouseEnter" />
+                            </Grid>
+                            <Separator Height="1" Margin="0" Background="#FF363636" Width="176" />
+                            <Grid Name="CloseHBOpt" Background="#FF1A1A1A" Height="24" Margin="0,8,0,0" MouseUp="CloseHBOpt_MouseUp">
+                                <FrameworkElement.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="CloseHBOpt" To="#18A0FB" />
+                                                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle5" To="#FFFFFF" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="CloseHBOpt" To="#FF1A1A1A" />
+                                                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle5" To="#D5D5D5" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </FrameworkElement.Triggers>
+                                <Label Name="TabTitle5" Content="Close Roblox" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="164" Background="{x:Null}" />
+                                <Canvas Name="svg1" Width="12" Height="12" Margin="10,6,177,6">
+                                    <UIElement.RenderTransform>
+                                        <TranslateTransform X="0" Y="0" />
+                                    </UIElement.RenderTransform>
+                                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path5" Stroke="#ffffff">
+                                        <Path.Data>
+                                            <PathGeometry Figures="M2 2L10 10M10 2L2 10" FillRule="NonZero" />
+                                        </Path.Data>
+                                    </Path>
+                                </Canvas>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <Border Name="FileOpts" HorizontalAlignment="Left" Height="113" Margin="207,137,0,0" VerticalAlignment="Top" Width="230" CornerRadius="0" Background="#FF1A1A1A" BorderThickness="1" BorderBrush="#FF000000" Visibility="Hidden" MouseEnter="FileOpts_MouseEnter" MouseLeave="FileOpts_MouseLeave">
+                    <StackPanel Width="228" HorizontalAlignment="Center" VerticalAlignment="Top" Height="111">
+                        <Grid Name="OpenFileOpt" Height="24" Margin="0,8,0,0" Background="#FF1A1A1A" MouseLeftButtonUp="OpenFileOpt_MouseLeftButtonUp">
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="OpenFileOpt" To="#18A0FB" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle22_Copy1" To="#FFFFFF" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle2" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="OpenFileOpt" To="#FF1A1A1A" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle22_Copy1" To="#D5D5D5" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle2" To="#D5D5D5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                            <Label Name="TabTitle2" Content="Open" FontFamily="Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="133" FontWeight="Medium" Background="{x:Null}" />
+                            <Label Name="TabTitle22_Copy1" Content="Ctrl+O" FontFamily="Fonts/#Inter" HorizontalAlignment="Left" Margin="164,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="60" FontWeight="Medium" Background="{x:Null}" />
+                        </Grid>
+                        <Grid Name="SaveOpt" Height="24" Margin="0" Background="#FF1A1A1A" MouseLeftButtonUp="SaveOpt_MouseLeftButtonUp">
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="SaveOpt" To="#18A0FB" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle22_Copy2" To="#FFFFFF" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle11" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="SaveOpt" To="#FF1A1A1A" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle22_Copy2" To="#D5D5D5" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle11" To="#D5D5D5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                            <Label Name="TabTitle11" Content="Save" FontFamily="Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="133" FontWeight="Medium" Background="{x:Null}" />
+                            <Label Name="TabTitle22_Copy2" Content="Ctrl+S" FontFamily="Fonts/#Inter" HorizontalAlignment="Left" Margin="164,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="60" FontWeight="Medium" Background="{x:Null}" />
+                        </Grid>
+                        <Grid Name="SaveFileOpt" Height="24" Margin="0" Background="#FF1A1A1A" MouseLeftButtonUp="SaveFileOpt_MouseLeftButtonUp">
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="SaveFileOpt" To="#18A0FB" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle22_Copy3" To="#FFFFFF" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle3" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="SaveFileOpt" To="#FF1A1A1A" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle22_Copy3" To="#D5D5D5" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle3" To="#D5D5D5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                            <Label Name="TabTitle3" Content="Save As" FontFamily="Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="133" FontWeight="Medium" Background="{x:Null}" />
+                            <Label Name="TabTitle22_Copy3" Content="Ctrl+Shift+S" FontFamily="Fonts/#Inter" HorizontalAlignment="Left" Margin="131,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="93" FontWeight="Medium" Background="{x:Null}" />
+                        </Grid>
+                        <Grid Name="OpenKrnlOpt" Height="24" Background="#FF1A1A1A" MouseLeftButtonUp="OpenKrnlOpt_MouseLeftButtonUp">
+                            <Label Name="TabTitle25" Content="Open Krnl folder" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="133" FontWeight="Medium" Background="{x:Null}" />
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="OpenKrnlOpt" To="#18A0FB" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle25" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="OpenKrnlOpt" To="#FF1A1A1A" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle25" To="#D5D5D5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+                <Grid Height="48" Margin="0,37.5,0,0" VerticalAlignment="Top" Background="#FF2C2C2C" Focusable="True">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid Name="menuOpt" HorizontalAlignment="Left" Width="52" Background="#FF2C2C2C" MouseLeftButtonUp="menuOpt_MouseLeftButtonUp">
+                        <FrameworkElement.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" Storyboard.TargetName="menuOpt" To="#000000" />
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.1" Storyboard.TargetName="svg95" To="35,24,11,17" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" Storyboard.TargetName="menuOpt" To="#2C2C2C" />
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.1" Storyboard.TargetName="svg95" To="35,18,11,17" />
+                                        <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0" Storyboard.TargetName="path93" To="#D5D5D5" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.1" Storyboard.TargetName="svg95" To="35,28,11,17" />
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" Storyboard.TargetName="menuOpt" To="#18A0FB" />
+                                        <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0.1" Storyboard.TargetName="path93" To="#FFFFFF" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.1" Storyboard.TargetName="svg95" To="35,24,11,17" />
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" Storyboard.TargetName="menuOpt" To="#000000" />
+                                        <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0.1" Storyboard.TargetName="path93" To="#D5D5D5" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </FrameworkElement.Triggers>
+                        <Canvas Name="svg95" Width="8" Height="5" Margin="35,18,11,17">
+                            <UIElement.RenderTransform>
+                                <TranslateTransform X="0" Y="0" />
+                            </UIElement.RenderTransform>
+                            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path93" Stroke="#d5d5d5">
+                                <Path.Data>
+                                    <PathGeometry Figures="M1 1L4 4L7 1" FillRule="NonZero" />
+                                </Path.Data>
+                            </Path>
+                        </Canvas>
+                    </Grid>
+                    <Grid Name="injectOpt" HorizontalAlignment="Left" Width="48" Background="#FF2C2C2C" Margin="52,0,0,0" MouseLeftButtonUp="injectOpt_MouseLeftButtonUp">
+                        <FrameworkElement.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" Storyboard.TargetName="injectOpt" To="#000000" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" Storyboard.TargetName="injectOpt" To="#2C2C2C" />
+                                        <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0" Storyboard.TargetName="connect" To="#D5D5D5" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" Storyboard.TargetName="injectOpt" To="#18A0FB" />
+                                        <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0.1" Storyboard.TargetName="connect" To="#FFFFFF" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" Storyboard.TargetName="injectOpt" To="#000000" />
+                                        <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0.1" Storyboard.TargetName="connect" To="#D5D5D5" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </FrameworkElement.Triggers>
+                        <Canvas Name="svg296" Width="24" Height="24">
+                            <UIElement.RenderTransform>
+                                <TranslateTransform X="0" Y="0" />
+                            </UIElement.RenderTransform>
+                            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="connect" Stroke="#FFD5D5D5">
+                                <Path.Data>
+                                    <PathGeometry Figures="M23 1L20.25 3.75M20.25 3.75C23.55 7.05 20.25 10.35 20.25 10.35L18.05 12.55L11.45 5.95L13.65 3.75C13.65 3.75 16.95 0.449999 20.25 3.75ZM1 23L3.75 20.25M3.75 20.25C0.45 16.95 3.75003 13.65 3.75003 13.65L5.95003 11.45L12.55 18.05L10.35 20.25C10.35 20.25 7.05 23.55 3.75 20.25ZM10.3501 10.35L7.60005 13.1M13.6501 13.65L10.9001 16.4" FillRule="NonZero" />
+                                </Path.Data>
+                            </Path>
+                        </Canvas>
+                    </Grid>
+                    <Grid Name="executeOpt" HorizontalAlignment="Right" Width="48" Background="#FF2C2C2C" MouseLeftButtonUp="executeOpt_MouseLeftButtonUp">
+                        <FrameworkElement.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" Storyboard.TargetName="executeOpt" To="#000000" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" Storyboard.TargetName="executeOpt" To="#2C2C2C" />
+                                        <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0" Storyboard.TargetName="path394" To="#D5D5D5" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" Storyboard.TargetName="executeOpt" To="#18A0FB" />
+                                        <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0.1" Storyboard.TargetName="path394" To="#FFFFFF" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" Storyboard.TargetName="executeOpt" To="#000000" />
+                                        <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0.1" Storyboard.TargetName="path394" To="#D5D5D5" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </FrameworkElement.Triggers>
+                        <Canvas Name="svg396" Width="10" Height="12">
+                            <UIElement.RenderTransform>
+                                <TranslateTransform X="0" Y="0" />
+                            </UIElement.RenderTransform>
+                            <FrameworkElement.Resources>
+                                <ResourceDictionary />
+                            </FrameworkElement.Resources>
+                            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path394" Stroke="#FFD5D5D5">
+                                <Path.Data>
+                                    <PathGeometry Figures="M9.02817 6L0.5 11.1169V0.883095L9.02817 6Z" FillRule="NonZero" />
+                                </Path.Data>
+                            </Path>
+                        </Canvas>
+                    </Grid>
+                </Grid>
+                <Grid Name="MainMenu" Margin="-752,38,752,0" Background="#FF222222" Focusable="True" MouseDown="MainMenu_MouseDown">
+                    <Grid Height="48" VerticalAlignment="Top" Background="#FF2C2C2C" Focusable="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid Name="menuOpt1" HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" Width="48" Background="#FF2C2C2C"/>
+                        <Label Name="Introduct" Content="Welcome, King!" HorizontalAlignment="Left" Margin="48,12,0,0" VerticalAlignment="Top" Padding="0,5,5,5" Width="113" Foreground="#FFD5D5D5" FontFamily="/KrnlUI;component/Fonts/#Inter" />
+                        <Border Name="SearchBorder" BorderBrush="#003E3E3E" BorderThickness="1" HorizontalAlignment="Right" Height="40" Margin="0,4,16,0" VerticalAlignment="Top" Width="107" CornerRadius="6" MouseEnter="SearchBorder_MouseEnter" MouseLeave="SearchBorder_MouseLeave">
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="BorderBrush.Color">
+                                            <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="SearchBorder" To="#FF4E4E4E" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="BorderBrush.Color">
+                                            <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="SearchBorder" To="#003E3E3E" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                            <Grid Background="#FF2C2C2C" Margin="5,0,4,0" Width="97" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+                                <TextBox Name="SearchInput" FontFamily="/KrnlUI;component/Fonts/#Inter" Height="23" Margin="11,7,33,0" Text="Search" VerticalAlignment="Top" Width="53" Foreground="#FF7C7C7C" Padding="-3,3,0,0" FontSize="13" HorizontalContentAlignment="Stretch" BorderThickness="0" CaretBrush="#FF999999" Background="{x:Null}" BorderBrush="{x:Null}" TextChanged="SearchInput_TextChanged" GotFocus="SearchInput_GotFocus" LostFocus="SearchInput_LostFocus" />
+                                <Grid Name="SearchGlass" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="24" Background="#FF2C2C2C" Margin="66,7,0,0" MouseLeftButtonUp="SearchGlass_MouseLeftButtonUp">
+                                    <Canvas Name="svg28" Width="16" Height="16">
+                                        <UIElement.RenderTransform>
+                                            <TranslateTransform X="0" Y="0" />
+                                        </UIElement.RenderTransform>
+                                        <Ellipse xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="circle24" Canvas.Left="0.5" Canvas.Top="0.5" Width="11" Height="11" Stroke="#FFA3A3A3" />
+                                        <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path26" Stroke="#FFA3A3A3">
+                                            <Path.Data>
+                                                <PathGeometry Figures="M10 10L15 15" FillRule="NonZero" />
+                                            </Path.Data>
+                                        </Path>
+                                    </Canvas>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <StackPanel Name="FolderDisplayer" Orientation="Horizontal" Height="48" Margin="215,0,0,0" VerticalAlignment="Top" Width="352" Background="#FF2C2C2C" Focusable="True" HorizontalAlignment="Left">
+                            <Controls:FolderDisplay x:Name="MainDirDisplay" MouseLeftButtonUp="FolderDisplay_MouseLeftButtonUp" MouseEnter="FolderDisplay_MouseEnter" MouseLeave="FolderDisplay_MouseLeave" HorizontalContentAlignment="Right" />
+                        </StackPanel>
+                    </Grid>
+                    <StackPanel HorizontalAlignment="Left" Height="48" Margin="182,0,0,0" VerticalAlignment="Top" Width="1" Background="#FF3E3E3E" />
+                    <StackPanel HorizontalAlignment="Left" Margin="182,48,0,0" Width="1" Background="#FF333333" />
+                    <Grid HorizontalAlignment="Left" Margin="0,48,0,0" Width="182" Background="#FF222222">
+                        <Grid Name="RecentTab" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="182" Background="#FF18A0FB" Margin="0,8,0,0" MouseLeftButtonDown="RecentTab_MouseDown">
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Background.Color">
+                                            <ColorAnimation Name="RecentTab1" Duration="0:0:0.1" Storyboard.TargetName="RecentTab" To="#18A0FB" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard Name="RecentTab2SB" TargetProperty="Background.Color">
+                                            <ColorAnimation Name="RecentTab2" Duration="0:0:0.1" Storyboard.TargetName="RecentTab" To="#18A0FB" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Background.Color">
+                                            <ColorAnimation Name="RecentTab3" Duration="0:0:0.1" Storyboard.TargetName="RecentTab" To="#18A0FB" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <ColorAnimation Name="RecentTab4" Duration="0:0:0.1" Storyboard.TargetName="circle19" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                                            <ColorAnimation Name="RecentTab5" Duration="0:0:0.1" Storyboard.TargetName="path21" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Foreground.Color">
+                                            <ColorAnimation Name="RecentTab6" Duration="0:0:0.1" Storyboard.TargetName="RecentTabLabel" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Background.Color">
+                                            <ColorAnimation Name="RecentTab7" Duration="0:0:0.1" Storyboard.TargetName="RecentTab" To="#18A0FB" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <ColorAnimation Name="RecentTab8" Duration="0:0:0.1" Storyboard.TargetName="circle19" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                                            <ColorAnimation Name="RecentTab9" Duration="0:0:0.1" Storyboard.TargetName="path21" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Foreground.Color">
+                                            <ColorAnimation Name="RecentTab10" Duration="0:0:0.1" Storyboard.TargetName="RecentTabLabel" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                            <Canvas Name="svg23" Width="16" Height="16" Margin="16,8,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                <UIElement.RenderTransform>
+                                    <TranslateTransform X="0" Y="0" />
+                                </UIElement.RenderTransform>
+                                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="circle19" Fill="#FFFFFF">
+                                    <Path.Data>
+                                        <PathGeometry Figures="M16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8Z" FillRule="EvenOdd" />
+                                    </Path.Data>
+                                </Path>
+                                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path21" Stroke="#FFFFFF" Canvas.Left="0.125">
+                                    <Path.Data>
+                                        <PathGeometry Figures="M7.5 4V8.5H12" FillRule="NonZero" />
+                                    </Path.Data>
+                                </Path>
+                            </Canvas>
+                            <Label Name="RecentTabLabel" Content="Recent" Margin="48,4,0,0" VerticalAlignment="Top" Padding="0,5,5,5" Foreground="#FFFFFF" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Width="105" />
+                        </Grid>
+                        <Grid Name="DraftsTab" Height="32" VerticalAlignment="Top" Background="#FF222222" Margin="0,44,0,0" MouseLeftButtonDown="DraftsTab_MouseDown">
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Background.Color">
+                                            <ColorAnimation Name="DraftsTab1" Duration="0:0:0.1" Storyboard.TargetName="DraftsTab" To="#262626" />
+                                            <ColorAnimation Name="DraftsTab12" Duration="0:0:0.1" Storyboard.TargetName="NewDraft" To="#262626" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard Name="DraftsTab2SB" TargetProperty="Background.Color">
+                                            <ColorAnimation Name="DraftsTab2" Duration="0:0:0.1" Storyboard.TargetName="DraftsTab" To="#FF222222" />
+                                            <ColorAnimation Name="DraftsTab13" Duration="0:0:0.1" Storyboard.TargetName="NewDraft" To="#FF222222" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Background.Color">
+                                            <ColorAnimation Name="DraftsTab3" Duration="0:0:0.1" Storyboard.TargetName="DraftsTab" To="#18A0FB" />
+                                            <ColorAnimation Name="DraftsTab14" Duration="0:0:0.1" Storyboard.TargetName="NewDraft" To="#18A0FB" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                                            <ColorAnimation Name="DraftsTab4" Duration="0:0:0.1" Storyboard.TargetName="path208" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                                            <ColorAnimation Name="DraftsTab5" Duration="0:0:0.1" Storyboard.TargetName="path56" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Foreground.Color">
+                                            <ColorAnimation Name="DraftsTab6" Duration="0:0:0.1" Storyboard.TargetName="DraftsTabLabel" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Background.Color">
+                                            <ColorAnimation Name="DraftsTab7" Duration="0:0:0.1" Storyboard.TargetName="DraftsTab" To="#262626" />
+                                            <ColorAnimation Name="DraftsTab15" Duration="0:0:0.1" Storyboard.TargetName="NewDraft" To="#262626" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                                            <ColorAnimation Name="DraftsTab8" Duration="0:0:0.1" Storyboard.TargetName="path208" To="#FF7D7D7D" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                                            <ColorAnimation Name="DraftsTab9" Duration="0:0:0.1" Storyboard.TargetName="path56" To="#FF7D7D7D" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Foreground.Color">
+                                            <ColorAnimation Name="DraftsTab10" Duration="0:0:0.1" Storyboard.TargetName="DraftsTabLabel" To="#FF7D7D7D" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                            <Canvas Name="svg210" Width="12" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,9,0,0">
+                                <UIElement.RenderTransform>
+                                    <TranslateTransform X="0" Y="0" />
+                                </UIElement.RenderTransform>
+                                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path208" Stroke="#7C7C7C">
+                                    <Path.Data>
+                                        <PathGeometry Figures="M7.5 0.5H0.5V14.5H11.5V4.5M7.5 0.5L11.5 4.5M7.5 0.5V4.5H11.5" FillRule="NonZero" />
+                                    </Path.Data>
+                                </Path>
+                            </Canvas>
+                            <Label Name="DraftsTabLabel" Content="Scripts" HorizontalAlignment="Left" Margin="48,4,0,0" VerticalAlignment="Top" Padding="0,5,5,5" Width="97" Foreground="#7C7C7C" FontFamily="/KrnlUI;component/Fonts/#Inter" />
+                        </Grid>
+                        <StackPanel HorizontalAlignment="Left" Height="1" Margin="16,89,16,0" VerticalAlignment="Top" Background="#FF333333" Width="150" />
+                        <Grid Name="CommunityTab" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="182" Background="#FF222222" Margin="0,100,0,0" MouseLeftButtonDown="CommunityTab_MouseDown">
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Background.Color">
+                                            <ColorAnimation Name="CommunityTab1" Duration="0:0:0.1" Storyboard.TargetName="CommunityTab" To="#262626" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard Name="CommunityTab2SB" TargetProperty="Background.Color">
+                                            <ColorAnimation Name="CommunityTab2" Duration="0:0:0.1" Storyboard.TargetName="CommunityTab" To="#FF222222" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Background.Color">
+                                            <ColorAnimation Name="CommunityTab3" Duration="0:0:0.1" Storyboard.TargetName="CommunityTab" To="#18A0FB" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <ColorAnimation Name="CommunityTab4" Duration="0:0:0.1" Storyboard.TargetName="path20" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Foreground.Color">
+                                            <ColorAnimation Name="CommunityTab5" Duration="0:0:0.1" Storyboard.TargetName="CommunityTabLabel" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Background.Color">
+                                            <ColorAnimation Name="CommunityTab6" Duration="0:0:0.1" Storyboard.TargetName="CommunityTab" To="#262626" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <ColorAnimation Name="CommunityTab7" Duration="0:0:0.1" Storyboard.TargetName="path20" To="#FF7D7D7D" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Foreground.Color">
+                                            <ColorAnimation Name="CommunityTab8" Duration="0:0:0.1" Storyboard.TargetName="CommunityTabLabel" To="#FF7D7D7D" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                            <Canvas Name="svg22" Width="17" Height="17" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,8,0,0">
+                                <UIElement.RenderTransform>
+                                    <TranslateTransform X="0" Y="0" />
+                                </UIElement.RenderTransform>
+                                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path20" Fill="#FF7D7D7D">
+                                    <Path.Data>
+                                        <PathGeometry Figures="M17 8.5C17 3.80558 13.1944 0 8.5 0C3.80558 0 0 3.80558 0 8.5C0 13.1944 3.80558 17 8.5 17C13.1944 17 17 13.1944 17 8.5ZM9.14583 15.6345C8.84842 15.94 8.63054 16 8.5 16C8.36946 16 8.15158 15.94 7.85417 15.6345C7.55369 15.3258 7.23702 14.8272 6.9498 14.1297C6.42011 12.8433 6.0575 11.0436 6.00625 9H10.9937C10.9425 11.0436 10.5799 12.8433 10.0502 14.1297C9.76298 14.8272 9.44631 15.3258 9.14583 15.6345ZM10.9937 8H6.00625C6.0575 5.95637 6.42011 4.15674 6.9498 2.87034C7.23702 2.17282 7.55369 1.67418 7.85417 1.36553C8.15158 1.06003 8.36946 1 8.5 1C8.63054 1 8.84842 1.06003 9.14583 1.36553C9.44631 1.67418 9.76298 2.17282 10.0502 2.87034C10.5799 4.15674 10.9425 5.95637 10.9937 8ZM11.994 9C11.9253 11.8789 11.2666 14.3733 10.3071 15.7809C13.4202 15.0107 15.7666 12.2962 15.9836 9H11.994ZM15.9836 8H11.994C11.9253 5.12111 11.2666 2.62667 10.3071 1.21915C13.4202 1.98927 15.7666 4.70381 15.9836 8ZM5.00595 8C5.07472 5.12111 5.73345 2.62667 6.69289 1.21915C3.57978 1.98927 1.23336 4.70381 1.0164 8H5.00595ZM1.0164 9C1.23336 12.2962 3.57978 15.0107 6.69289 15.7809C5.73345 14.3733 5.07472 11.8789 5.00595 9H1.0164Z" FillRule="EvenOdd" />
+                                    </Path.Data>
+                                </Path>
+                            </Canvas>
+                            <Label Name="CommunityTabLabel" Content="Community" HorizontalAlignment="Left" Margin="48,4,0,0" VerticalAlignment="Top" Padding="0,5,5,5" Width="105" Foreground="#FF7D7D7D" FontFamily="/KrnlUI;component/Fonts/#Inter" />
+                        </Grid>
+                        <StackPanel HorizontalAlignment="Left" Height="1" Margin="16,145,0,0" VerticalAlignment="Top" Background="#FF333333" Width="150" Visibility="Hidden" />
+                        <Grid Name="UpgradeTab" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="182" Background="#FF222222" Margin="0,156,0,0" Visibility="Hidden" MouseLeftButtonDown="UpgradeTab_MouseDown">
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Background.Color">
+                                            <ColorAnimation Name="UpgradeTab1" Duration="0:0:0.1" Storyboard.TargetName="UpgradeTab" To="#262626" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard Name="UpgradeTab2SB" TargetProperty="Background.Color">
+                                            <ColorAnimation Name="UpgradeTab2" Duration="0:0:0.1" Storyboard.TargetName="UpgradeTab" To="#FF222222" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Background.Color">
+                                            <ColorAnimation Name="UpgradeTab3" Duration="0:0:0.1" Storyboard.TargetName="UpgradeTab" To="#18A0FB" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <ColorAnimation Name="UpgradeTab4" Duration="0:0:0.1" Storyboard.TargetName="path42" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <ColorAnimation Name="UpgradeTab5" Duration="0:0:0.1" Storyboard.TargetName="path44" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Foreground.Color">
+                                            <ColorAnimation Name="UpgradeTab6" Duration="0:0:0.1" Storyboard.TargetName="UpgradeTabLabel" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Background.Color">
+                                            <ColorAnimation Name="UpgradeTab7" Duration="0:0:0.1" Storyboard.TargetName="UpgradeTab" To="#262626" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <ColorAnimation Name="UpgradeTab8" Duration="0:0:0.1" Storyboard.TargetName="path42" To="#FF7D7D7D" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <ColorAnimation Name="UpgradeTab9" Duration="0:0:0.1" Storyboard.TargetName="path44" To="#FF7D7D7D" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                    <BeginStoryboard>
+                                        <Storyboard TargetProperty="Foreground.Color">
+                                            <ColorAnimation Name="UpgradeTab10" Duration="0:0:0.1" Storyboard.TargetName="UpgradeTabLabel" To="#FF7D7D7D" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                            <Canvas Name="svg46" Width="17" Height="17" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,8,0,0">
+                                <UIElement.RenderTransform>
+                                    <TranslateTransform X="0" Y="0" />
+                                </UIElement.RenderTransform>
+                                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path42" Fill="#FF7D7D7D">
+                                    <Path.Data>
+                                        <PathGeometry Figures="M12.3536 7.64645L8.50001 3.79289L4.64645 7.64645L5.35356 8.35355L8.00001 5.70711V13H9.00001V5.70711L11.6465 8.35355L12.3536 7.64645Z" FillRule="NonZero" />
+                                    </Path.Data>
+                                </Path>
+                                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path44" Fill="#FF7D7D7D">
+                                    <Path.Data>
+                                        <PathGeometry Figures="M17 8.5C17 13.1944 13.1944 17 8.5 17C3.80558 17 0 13.1944 0 8.5C0 3.80558 3.80558 0 8.5 0C13.1944 0 17 3.80558 17 8.5ZM16 8.5C16 12.6421 12.6421 16 8.5 16C4.35786 16 1 12.6421 1 8.5C1 4.35786 4.35786 1 8.5 1C12.6421 1 16 4.35786 16 8.5Z" FillRule="EvenOdd" />
+                                    </Path.Data>
+                                </Path>
+                            </Canvas>
+                            <Label Name="UpgradeTabLabel" Content="Upgrade plan" HorizontalAlignment="Left" Margin="48,4,0,0" VerticalAlignment="Top" Padding="0,5,5,5" Width="105" Foreground="#FF7D7D7D" FontFamily="/KrnlUI;component/Fonts/#Inter" />
+                        </Grid>
+                        <Grid Name="NewDraft" HorizontalAlignment="Left" Height="23" Margin="152,48,0,0" VerticalAlignment="Top" Width="23" Background="#FF222222" MouseLeftButtonUp="NewDraft_MouseLeftButtonUp">
+                            <Canvas Name="svg58" Width="11" Height="11" Margin="6">
+                                <UIElement.RenderTransform>
+                                    <TranslateTransform X="0" Y="0" />
+                                </UIElement.RenderTransform>
+                                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path56" Stroke="#7C7C7C">
+                                    <Path.Data>
+                                        <PathGeometry Figures="M5.5 0V5.5M5.5 5.5V11M5.5 5.5H11M5.5 5.5H0" FillRule="NonZero" />
+                                    </Path.Data>
+                                </Path>
+                            </Canvas>
+                        </Grid>
+                    </Grid>
+                    <Grid Name="ManagedWrapper" Margin="183,48,0,0">
+                        <ScrollViewer Name="CardHolderScroller" Background="#FF222222" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" MouseDown="KrnlWindow_MouseDown" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+                            <Grid Name="ObjectHolder" Margin="17,20,0,0">
+                                <WrapPanel Name="CardHolder" Background="#FF222222" Focusable="True" />
+                            </Grid>
+                        </ScrollViewer>
+                        <Border Name="FileContextMenu" Background="#FF1A1A1A" BorderThickness="1" BorderBrush="#FF000000" CornerRadius="2" Width="126" Height="157" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" LostFocus="FileContextMenu_LostFocus">
+                            <Grid>
+                                <Grid Name="OpenHBOpt" Margin="0,8,0,0" Background="#FF1A1A1A" Width="124" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top" MouseLeftButtonUp="OpenHBOpt_MouseLeftButtonUp_1">
+                                    <Label Name="TabTitle1" Content="Open" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="16,4,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="93" FontWeight="Medium" Background="{x:Null}" />
+                                    <FrameworkElement.Triggers>
+                                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="OpenHBOpt" To="#18A0FB" />
+                                                    <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle1" To="#FFFFFF" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="OpenHBOpt" To="#FF1A1A1A" />
+                                                    <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle1" To="#D5D5D5" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </FrameworkElement.Triggers>
+                                </Grid>
+                                <Separator Margin="12,63,0,0" Background="#FF363636" Height="1" Width="94" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                <Grid Name="RenameHBOpt" Margin="0,72,0,0" Background="#FF1A1A1A" Width="124" Height="24" HorizontalAlignment="Center" VerticalAlignment="Top" MouseLeftButtonUp="RenameHBOpt_MouseLeftButtonUp_1">
+                                    <Label Name="TabTitle4" Content="Rename" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="16,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="95" FontWeight="Medium" Background="{x:Null}" />
+                                    <FrameworkElement.Triggers>
+                                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="RenameHBOpt" To="#18A0FB" />
+                                                    <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle4" To="#FFFFFF" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="RenameHBOpt" To="#FF1A1A1A" />
+                                                    <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle4" To="#D5D5D5" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </FrameworkElement.Triggers>
+                                </Grid>
+                                <Grid Name="DeleteHBOpt" Margin="0,96,0,0" Background="#FF1A1A1A" Width="124" Height="24" HorizontalAlignment="Center" VerticalAlignment="Top" MouseLeftButtonUp="DeleteHBOpt_MouseLeftButtonUp_1">
+                                    <Label Name="TabTitle10" Content="Delete" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="16,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="95" FontWeight="Medium" Background="{x:Null}" />
+                                    <FrameworkElement.Triggers>
+                                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="DeleteHBOpt" To="#18A0FB" />
+                                                    <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle10" To="#FFFFFF" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="DeleteHBOpt" To="#FF1A1A1A" />
+                                                    <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle10" To="#D5D5D5" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </FrameworkElement.Triggers>
+                                </Grid>
+                                <Grid Name="ExplorerHBOpt" Margin="0,121,0,0" Background="#FF1A1A1A" Width="124" Height="24" HorizontalAlignment="Center" VerticalAlignment="Top" MouseLeftButtonUp="ExplorerHBOpt_MouseLeftButtonUp">
+                                    <Label Name="TabTitle23" Content="View in explorer" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="16,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="95" FontWeight="Medium" Background="{x:Null}" />
+                                    <FrameworkElement.Triggers>
+                                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="ExplorerHBOpt" To="#18A0FB" />
+                                                    <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle23" To="#FFFFFF" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="ExplorerHBOpt" To="#FF1A1A1A" />
+                                                    <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle23" To="#D5D5D5" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </FrameworkElement.Triggers>
+                                </Grid>
+                                <Grid Name="ExecuteHBOpt" Margin="0,32,0,0" Background="#FF1A1A1A" Width="124" Height="24" HorizontalAlignment="Center" VerticalAlignment="Top" MouseLeftButtonUp="ExecuteHBOpt_MouseLeftButtonUp_1">
+                                    <Label Name="TabTitle26" Content="Execute" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="16,4,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="93" FontWeight="Medium" Background="{x:Null}" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+                <Border Name="EditOpts" HorizontalAlignment="Left" Height="218" Margin="207,161,0,0" VerticalAlignment="Top" Width="230" CornerRadius="0" Background="#FF1A1A1A" BorderThickness="1" BorderBrush="#FF000000" Visibility="Hidden" MouseEnter="EditOpts_MouseEnter" MouseLeave="EditOpts_MouseLeave">
+                    <StackPanel Width="228" HorizontalAlignment="Left" VerticalAlignment="Top" Height="218" Margin="0,0,0,-1">
+                        <Grid Name="UndoOpt" Height="24" Margin="0,8,0,0" Background="#FF1A1A1A" MouseLeftButtonUp="UndoOpt_MouseLeftButtonUp">
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="UndoOpt" To="#18A0FB" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle12" To="#FFFFFF" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle12_Copy" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="UndoOpt" To="#FF1A1A1A" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle12" To="#D5D5D5" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle12_Copy" To="#D5D5D5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                            <Label Name="TabTitle12" Content="Undo" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="56" FontWeight="Medium" Background="{x:Null}" />
+                            <Label Name="TabTitle12_Copy" Content="Ctrl+Z" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="164,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="36" FontWeight="Medium" Background="{x:Null}" />
+                        </Grid>
+                        <Grid Name="RedoOpt" Height="24" Margin="0" Background="#FF1A1A1A" MouseLeftButtonUp="RedoOpt_MouseLeftButtonUp">
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="RedoOpt" To="#18A0FB" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle13" To="#FFFFFF" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle12_Copy1" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="RedoOpt" To="#FF1A1A1A" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle13" To="#D5D5D5" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle12_Copy1" To="#D5D5D5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                            <Label Name="TabTitle13" Content="Redo" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="56" FontWeight="Medium" Background="{x:Null}" />
+                            <Label Name="TabTitle12_Copy1" Content="Ctrl+Y" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="164,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="36" FontWeight="Medium" Background="{x:Null}" />
+                        </Grid>
+                        <Separator Height="1" Margin="12,8" Background="#FF363636" Width="176" />
+                        <Grid Name="CutOpt" Height="24" Margin="0" Background="#FF1A1A1A" MouseLeftButtonUp="CutOpt_MouseLeftButtonUp">
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="CutOpt" To="#18A0FB" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle17" To="#FFFFFF" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle12_Copy2" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="CutOpt" To="#FF1A1A1A" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle17" To="#D5D5D5" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle12_Copy2" To="#D5D5D5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                            <Label Name="TabTitle17" Content="Cut" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="56" FontWeight="Medium" Background="{x:Null}" />
+                            <Label Name="TabTitle12_Copy2" Content="Ctrl+X" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="164,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="36" FontWeight="Medium" Background="{x:Null}" />
+                        </Grid>
+                        <Grid Name="CopyOpt" Height="24" Margin="0" Background="#FF1A1A1A" MouseLeftButtonUp="CopyOpt_MouseLeftButtonUp">
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="CopyOpt" To="#18A0FB" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle18" To="#FFFFFF" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle12_Copy3" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="CopyOpt" To="#FF1A1A1A" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle18" To="#D5D5D5" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle12_Copy3" To="#D5D5D5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                            <Label Name="TabTitle18" Content="Copy" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="56" FontWeight="Medium" Background="{x:Null}" />
+                            <Label Name="TabTitle12_Copy3" Content="Ctrl+C" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="164,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="36" FontWeight="Medium" Background="{x:Null}" />
+                        </Grid>
+                        <Grid Name="PasteOpt" Height="24" Margin="0" Background="#FF1A1A1A" MouseLeftButtonUp="PasteOpt_MouseLeftButtonUp">
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="PasteOpt" To="#18A0FB" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle19" To="#FFFFFF" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle12_Copy4" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="PasteOpt" To="#FF1A1A1A" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle19" To="#D5D5D5" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle12_Copy4" To="#D5D5D5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                            <Label Name="TabTitle19" Content="Paste" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="56" FontWeight="Medium" Background="{x:Null}" />
+                            <Label Name="TabTitle12_Copy4" Content="Ctrl+V" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="164,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="36" FontWeight="Medium" Background="{x:Null}" />
+                        </Grid>
+                        <Grid Name="DeleteOpt" Height="24" Margin="0" Background="#FF1A1A1A" MouseLeftButtonUp="DeleteOpt_MouseLeftButtonUp">
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="DeleteOpt" To="#18A0FB" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle20" To="#FFFFFF" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle12_Copy5" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="DeleteOpt" To="#FF1A1A1A" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle20" To="#D5D5D5" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle12_Copy5" To="#D5D5D5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                            <Label Name="TabTitle20" Content="Delete" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="56" FontWeight="Medium" Background="{x:Null}" />
+                            <Label Name="TabTitle12_Copy5" Content="Backspace&#xD;&#xA;" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="138,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="62" FontWeight="Medium" Background="{x:Null}" />
+                        </Grid>
+                        <Separator Height="1" Margin="26,8" Background="#FF363636" Width="176" />
+                        <Grid Name="SelectAllOpt" Height="24" Margin="0" Background="#FF1A1A1A" MouseLeftButtonUp="SelectAllOpt_MouseLeftButtonUp">
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="SelectAllOpt" To="#18A0FB" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle21" To="#FFFFFF" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle12_Copy6" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="SelectAllOpt" To="#FF1A1A1A" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle21" To="#D5D5D5" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle12_Copy6" To="#D5D5D5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                            <Label Name="TabTitle21" Content="Select all" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="56" FontWeight="Medium" Background="{x:Null}" />
+                            <Label Name="TabTitle12_Copy6" Content="Ctrl+A" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="164,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="36" FontWeight="Medium" Background="{x:Null}" />
+                        </Grid>
+                    </StackPanel>
+                </Border>
+                <Border Name="PrefOpts" HorizontalAlignment="Left" Height="129" Margin="207,96,0,0" VerticalAlignment="Top" Width="200" CornerRadius="0" Background="#FF1A1A1A" BorderThickness="1" BorderBrush="#FF000000" Visibility="Hidden" MouseEnter="PrefOpts_MouseEnter" MouseLeave="PrefOpts_MouseLeave">
+                    <StackPanel Width="197" HorizontalAlignment="Center" VerticalAlignment="Top" Height="121">
+                        <Grid Name="AutoAttachOpt" Height="24" Margin="0,8,0,0" Background="#FF1A1A1A" MouseLeftButtonUp="AutoAttachOpt_MouseLeftButtonUp">
+                            <Label Name="TabTitle16" Content="Auto-attach" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="133" FontWeight="Medium" Background="{x:Null}" />
+                            <Canvas Name="svg242" Width="12" Height="9" Margin="11,8,174,7" Visibility="Hidden">
+                                <UIElement.RenderTransform>
+                                    <TranslateTransform X="0" Y="0" />
+                                </UIElement.RenderTransform>
+                                <FrameworkElement.Resources>
+                                    <ResourceDictionary />
+                                </FrameworkElement.Resources>
+                                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path230" Stroke="#FFD5D5D5" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                                    <Path.Data>
+                                        <PathGeometry Figures="M1 5L4 8L11 1" FillRule="NonZero" />
+                                    </Path.Data>
+                                </Path>
+                            </Canvas>
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="AutoAttachOpt" To="#18A0FB" />
+                                            <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0" Storyboard.TargetName="path230" To="#FFFFFF" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle16" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="AutoAttachOpt" To="#FF1A1A1A" />
+                                            <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0" Storyboard.TargetName="path230" To="#D5D5D5" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle16" To="#D5D5D5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                        </Grid>
+                        <Grid Name="AutoLaunchOpt" Height="24" Background="#FF1A1A1A" Margin="0,4,0,0" MouseLeftButtonUp="AutoLaunchOpt_MouseLeftButtonUp">
+                            <Label Name="TabTitle24" Content="Auto-launch" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="133" FontWeight="Medium" Background="{x:Null}" />
+                            <Canvas Name="svg3" Width="12" Height="9" Margin="11,8,174,7" Visibility="Hidden">
+                                <UIElement.RenderTransform>
+                                    <TranslateTransform X="0" Y="0" />
+                                </UIElement.RenderTransform>
+                                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path4" Stroke="#FFD5D5D5" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                                    <Path.Data>
+                                        <PathGeometry Figures="M1 5L4 8L11 1" FillRule="NonZero" />
+                                    </Path.Data>
+                                </Path>
+                            </Canvas>
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="AutoLaunchOpt" To="#18A0FB" />
+                                            <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0" Storyboard.TargetName="path4" To="#FFFFFF" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle24" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="AutoLaunchOpt" To="#FF1A1A1A" />
+                                            <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0" Storyboard.TargetName="path4" To="#D5D5D5" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle24" To="#D5D5D5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                        </Grid>
+                        <Grid Name="TopmostOpt" Height="24" Margin="0,4,0,0" Background="#FF1A1A1A" MouseLeftButtonUp="TopmostOpt_MouseLeftButtonUp">
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="TopmostOpt" To="#18A0FB" />
+                                            <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0" Storyboard.TargetName="path1" To="#FFFFFF" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle15" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="TopmostOpt" To="#FF1A1A1A" />
+                                            <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0" Storyboard.TargetName="path1" To="#FFFFFF" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle15" To="#D5D5D5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                            <Label Name="TabTitle15" Content="Always on top" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="133" FontWeight="Medium" Background="{x:Null}" />
+                            <Canvas Name="svg242_Copy" Width="12" Height="9" Margin="11,8,174,7" Visibility="Hidden">
+                                <UIElement.RenderTransform>
+                                    <TranslateTransform X="0" Y="0" />
+                                </UIElement.RenderTransform>
+                                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1" Stroke="#FFD5D5D5" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                                    <Path.Data>
+                                        <PathGeometry Figures="M1 5L4 8L11 1" FillRule="NonZero" />
+                                    </Path.Data>
+                                </Path>
+                            </Canvas>
+                        </Grid>
+                        <Grid Name="UnlockFPSOpt" Height="24" Margin="0,4,0,0" Background="#FF1A1A1A" MouseLeftButtonUp="UnlockFPSOpt_MouseLeftButtonUp">
+                            <Label Name="TabTitle22" Content="Unlock FPS" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="133" FontWeight="Medium" Background="{x:Null}" />
+                            <Canvas Name="svg242_Copy1" Width="12" Height="9" Margin="11,8,174,7" Visibility="Hidden">
+                                <UIElement.RenderTransform>
+                                    <TranslateTransform X="0" Y="0" />
+                                </UIElement.RenderTransform>
+                                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path3" Stroke="#FFD5D5D5" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                                    <Path.Data>
+                                        <PathGeometry Figures="M1 5L4 8L11 1" FillRule="NonZero" />
+                                    </Path.Data>
+                                </Path>
+                            </Canvas>
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="UnlockFPSOpt" To="#18A0FB" />
+                                            <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0" Storyboard.TargetName="path3" To="#FFFFFF" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle22" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="UnlockFPSOpt" To="#FF1A1A1A" />
+                                            <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0" Storyboard.TargetName="path3" To="#FFFFFF" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle22" To="#D5D5D5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+                <Border Name="ViewOpts" HorizontalAlignment="Left" Height="36" Margin="207,185,0,0" VerticalAlignment="Top" Width="200" CornerRadius="0" Background="#FF1A1A1A" BorderThickness="1" BorderBrush="#FF000000" Visibility="Hidden" MouseEnter="ViewOpts_MouseEnter" MouseLeave="ViewOpts_MouseLeave">
+                    <StackPanel Width="196" HorizontalAlignment="Center" VerticalAlignment="Top" Height="32" Margin="0,1,0,0">
+                        <Grid Name="MinimapOpt" Height="24" Margin="0,4,0,0" Background="#FF1A1A1A" MouseLeftButtonUp="MinimapOpt_MouseLeftButtonUp">
+                            <Canvas Name="svg2422" Width="12" Height="9" Margin="11,8,174,7" Visibility="Hidden">
+                                <UIElement.RenderTransform>
+                                    <TranslateTransform X="0" Y="0" />
+                                </UIElement.RenderTransform>
+                                <FrameworkElement.Resources>
+                                    <ResourceDictionary />
+                                </FrameworkElement.Resources>
+                                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path2340" Stroke="#FFD5D5D5" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                                    <Path.Data>
+                                        <PathGeometry Figures="M1 5L4 8L11 1" FillRule="NonZero" />
+                                    </Path.Data>
+                                </Path>
+                            </Canvas>
+                            <Label Name="TabTitle14" Content="Code Minimap" FontFamily="/KrnlUI;component/Fonts/#Inter" HorizontalAlignment="Left" Margin="32,5,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Height="16" Padding="0" Width="133" FontWeight="Medium" Background="{x:Null}" />
+                            <FrameworkElement.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="MinimapOpt" To="#18A0FB" />
+                                            <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0" Storyboard.TargetName="path2340" To="#FFFFFF" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle14" To="#FFFFFF" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0" Storyboard.TargetName="MinimapOpt" To="#FF1A1A1A" />
+                                            <ColorAnimation Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Duration="0:0:0" Storyboard.TargetName="path2340" To="#D5D5D5" />
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0" Storyboard.TargetName="TabTitle14" To="#D5D5D5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </FrameworkElement.Triggers>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+        <Border Name="FileExecNotf" BorderBrush="#FF000000" BorderThickness="1" HorizontalAlignment="Center" Height="36" Margin="0,0,0,8" VerticalAlignment="Bottom" Background="#FF222222" CornerRadius="4" Visibility="Hidden" Opacity="0">
+            <UIElement.Effect>
+                <DropShadowEffect Opacity="0.25" Direction="260" ShadowDepth="6" BlurRadius="12" />
+            </UIElement.Effect>
+            <Grid>
+                <Canvas Name="svg224" Width="12" Height="9" Margin="16,13,0,12" HorizontalAlignment="Left">
+                    <UIElement.RenderTransform>
+                        <TranslateTransform X="0" Y="0" />
+                    </UIElement.RenderTransform>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path205" Stroke="#FFD5D5D5" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                        <Path.Data>
+                            <PathGeometry Figures="M1 5L4 8L11 1" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+                <Label Name="FileNotfText" Content="File Executed!" HorizontalAlignment="Left" Margin="35,5,11,0" VerticalAlignment="Top" Foreground="#FFD5D5D5" FontSize="11" FontFamily="/KrnlUI;component/Fonts/#Inter" />
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
