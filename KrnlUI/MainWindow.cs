@@ -125,14 +125,11 @@ public partial class MainWindow : Window, IComponentConnector
 		//Console.Title = "Krnl UWP Console";
 		ConsoleFramework.Init();
 		AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-		string text = "";
-		string[] directories = Directory.GetDirectories(Environment.GetEnvironmentVariable("LocalAppData") + "\\Packages");
+		string text = "Krnl Workspace";
+		string[] directories = Directory.GetDirectories(Environment.GetEnvironmentVariable("LocalAppData") + "\\Bloxstrap");
 		foreach (string text2 in directories)
 		{
-			if (text2.Contains("OBLOXCORPORATION") && Directory.GetDirectories(text2 + "\\AC").Any((string dir) => dir.Contains("Temp")))
-			{
-				text = text2 + "\\AC";
-			}
+			break;
 		}
 		if (text == "")
 		{
