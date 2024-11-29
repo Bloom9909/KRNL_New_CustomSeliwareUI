@@ -10,7 +10,6 @@ public partial class App : Application
     public static void Main()
     {
         var app = new App();
-        Seliware.Initialize();
         app.Run(new MainWindow());
     }
 }

@@ -29,8 +29,6 @@ namespace KrnlUI;
 
 public partial class MainWindow : Window, IComponentConnector
 {
-	private string SiteUrl = "";
-
 	private List<CommunityEntry> CommunityCards = new List<CommunityEntry>();
 
 	private bool TabChanging;
@@ -42,8 +40,6 @@ public partial class MainWindow : Window, IComponentConnector
 	private bool isAutoAttached;
 
 	private bool AutoLaunchEnabled = true;
-
-	private bool UWPOpened;
 
 	private int TabCount = 2;
 
@@ -111,12 +107,13 @@ public partial class MainWindow : Window, IComponentConnector
 	private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
 	{
 		Exception ex = (Exception)e.ExceptionObject;
-		File.WriteAllText("error.txt", string.Join("\n", "Message: " + ex.Message, "StackTrace: " + ex.StackTrace, "Source: " + ex.Source, "TargetSite: " + ex.TargetSite, "HResult: " + ex.HResult, "HelpLink: " + ex.HelpLink, "Values: [ " + string.Join("\n", ex.Data.Values) + " ]"));
-	}
+		File.WriteAllText("error.txt", string.Join("Message: " + ex.Message, "StackTrace: " + ex.StackTrace));
+    }
 
 	public MainWindow()
 	{
-		if (Process.GetProcessesByName("KrnlUI").Length > 1)
+		Seliware.Initialize();
+        if (Process.GetProcessesByName("KrnlUI").Length > 1)
 		{
 			Environment.Exit(0);
 			return;
@@ -126,17 +123,6 @@ public partial class MainWindow : Window, IComponentConnector
 		ConsoleFramework.Init();
 		AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 		string text = "Krnl Workspace";
-		string[] directories = Directory.GetDirectories(Environment.GetEnvironmentVariable("LocalAppData") + "\\Bloxstrap");
-		foreach (string text2 in directories)
-		{
-			break;
-		}
-		if (text == "")
-		{
-			MessageBox.Show("Please install Bloxtrap", "Krnl", MessageBoxButton.OK, MessageBoxImage.Hand);
-			Environment.Exit(0);
-			return;
-		}
 		while (true)
 		{
 			int num;
@@ -147,7 +133,7 @@ public partial class MainWindow : Window, IComponentConnector
 				case -1:
 					break;
 				case -3:
-					MessageBox.Show("Krnl is not updated for the current UWP version!\nMake sure you update ROBLOX from Microsoft Store!", "Krnl", MessageBoxButton.OK, MessageBoxImage.Hand);
+					MessageBox.Show("Krnl is not updated for the current Fuck version!\nMake sure you update ROBLOX!", "Krnl", MessageBoxButton.OK, MessageBoxImage.Hand);
 					Environment.Exit(0);
 					return;
 				default:
@@ -254,7 +240,7 @@ public partial class MainWindow : Window, IComponentConnector
 				}
 			}
 			Framework.krnl_dll.Download();
-		}
+        }
 	}
 
 	private void InitTabs()
@@ -1748,7 +1734,7 @@ public partial class MainWindow : Window, IComponentConnector
 		{
 			flag = !flag;
 		}
-		Seliware.Execute("setfpscap(144)");
+		Seliware.Execute("setfpscap(999)");
 		svg242_Copy1.Visibility = ((!flag) ? Visibility.Hidden : Visibility.Visible);
 	}
 
