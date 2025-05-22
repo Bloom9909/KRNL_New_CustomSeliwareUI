@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <AssemblyName>KrnlUI</AssemblyName>
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
@@ -17,7 +17,9 @@
     <RootNamespace />
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="app.ico" />
     <None Remove="fonts\roboto-medium.ttf" />
+    <None Remove="images\applogo.png" />
     <None Remove="png.png" />
     <None Remove="images\iconl.png" />
     <None Remove="image2.png" />
@@ -41,8 +43,8 @@
     <EmbeddedResource Include="fonts\inter-regular.ttf" LogicalName="fonts/inter-regular.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="CefSharp.Common" Version="129.0.110" />
-    <PackageReference Include="CefSharp.Wpf" Version="129.0.110" />
+    <PackageReference Include="CefSharp.Common" Version="136.1.40" />
+    <PackageReference Include="CefSharp.Wpf" Version="136.1.40" />
     <PackageReference Include="FCTB" Version="2.16.21" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
@@ -60,5 +62,9 @@
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="CefSharp.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="app.ico" />
+    <Resource Include="images\applogo.png" />
   </ItemGroup>
 </Project>

@@ -192,7 +192,7 @@ public partial class MainWindow : Window, IComponentConnector
 					MainMenu.Margin = new Thickness(0.0, 37.0, 0.0, 0.0);
 					InitRecents();
 					ActivateRecent();
-					AutoAttach();
+                    AutoAttach();
 					ConsoleFramework.TailFrom(Path.Combine(path, "k_ipc.txt"));
 					RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE", writable: true);
 					if (registryKey.OpenSubKey("Krnl") == null)
@@ -315,9 +315,16 @@ public partial class MainWindow : Window, IComponentConnector
 	{
 		while (true)
 		{
-			if (AutoAttachEnabled && Process.GetProcessesByName("RobloxPlayerBeta").Length != 0 && !Seliware.IsInjected())
+			if (AutoAttachEnabled && Process.GetProcessesByName("RobloxPlayerBeta").Length != 0)
 			{
-			   DisplayNotification("Successfully injected into Roblox!");
+				bool status;
+				status = Injector.inject_status();
+
+				if (status == false)
+				{
+					Injector.injection();
+					await Task.Delay(7000);
+				}
 			}
 			await Task.Delay(300);
 		}
@@ -679,32 +686,52 @@ public partial class MainWindow : Window, IComponentConnector
 		Inject();
 	}
 
-	private void Inject()
+	private async void Inject()
 	{
+
 		if (Process.GetProcessesByName("RobloxPlayerBeta").Any())
 		{
-			Seliware.Inject();
+			bool status;
+			status = Injector.inject_status();
+
+			if (status == false)
+			{
+				Injector.injection();
+			}
+			else
+			{
+				DisplayNotification("Seliware already injected");
+			}
 		}
 		else
 		{
-			DisplayNotification("Roblox is not running");
+			string robloxpath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SeliwareLauncher", "SeliwareLauncher.exe");
+
+			if (!File.Exists(robloxpath))
+			{
+				DisplayNotification("Seliware Launcher not found");
+				return;
+			}
+
+			if (Process.GetProcessesByName("SeliwareLauncher").Any())
+			{
+				DisplayNotification("Seliware Launcher already running");
+				return;
+			}
+			else
+			{
+				ProcessStartInfo psi = new ProcessStartInfo
+				{
+					FileName = robloxpath,
+					UseShellExecute = true,
+					Verb = "runas",
+					WorkingDirectory = Path.GetDirectoryName(robloxpath)
+				};
+
+				Process.Start(psi);
+
+            }
 		}
-
-	}
-
-	private void AnimateInjecting()
-	{
-		LoadBar.Visibility = Visibility.Visible;
-		LoaderAnim.To = Color.FromArgb(byte.MaxValue, 77, 146, byte.MaxValue);
-		LoaderAnimStoryboard.Begin();
-	}
-
-	private async void AnimateInjected()
-	{
-		LoaderAnim.To = Color.FromArgb(0, 77, byte.MaxValue, 146);
-		LoaderAnimStoryboard.Begin();
-		await Task.Delay(200);
-		LoadBar.Visibility = Visibility.Hidden;
 	}
 
 	private void executeOpt_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -712,22 +739,6 @@ public partial class MainWindow : Window, IComponentConnector
 		Seliware.Execute(ReadScript());
 	}
 
-	private void IsSeliwareInjected(string script)
-	{
-        bool isInjected = Seliware.IsInjected();
-		{
-			if (true == isInjected)
-			{
-				MessageBox.Show("Seliware Injected");
-			}
-			else
-			{
-                DisplayNotification("Please inject before executing!");
-            }
-
-		}
-		return;
-	}
 
 	private void menuOpt_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
@@ -1077,7 +1088,7 @@ public partial class MainWindow : Window, IComponentConnector
 
 	private void CommunityCard_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
-        Seliware.Execute(ReadScript());
+		Injector.run_script();
     }
 
 	private ExplorerEntry CreateExplorerCard(string Title, string Script, TimeSpan CreationDate, string Path)
@@ -1734,10 +1745,24 @@ public partial class MainWindow : Window, IComponentConnector
 		{
 			flag = !flag;
 		}
-		Seliware.Execute("setfpscap(999)");
 		svg242_Copy1.Visibility = ((!flag) ? Visibility.Hidden : Visibility.Visible);
 	}
 
+	private void UnlockFPS()
+	{
+        RegistryKey krnlSubkey = getKrnlSubkey();
+        object status;
+		status = krnlSubkey.GetValue("UnlockFPS");
+
+		if ((bool)status == true)
+		{
+			Seliware.Execute("setfpscap(999)");
+		}
+		else
+		{
+			Seliware.Execute("setfpscap(60)");
+		}
+	}
 	private RegistryKey getKrnlSubkey()
 	{
 		RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE");
@@ -1795,27 +1820,8 @@ public partial class MainWindow : Window, IComponentConnector
 		svg242.Visibility = ((!AutoAttachEnabled) ? Visibility.Hidden : Visibility.Visible);
 	}
 
-	private void update_roblox_path()
-	{
-		try
-		{
-			string path = (((Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("ROBLOX Corporation") ?? throw new Exception()).OpenSubKey("Environments") ?? throw new Exception()).OpenSubKey("roblox-player") ?? throw new Exception()).GetValue("").ToString();
-			roblox_path = Directory.GetParent(path).FullName;
-		}
-		catch (Exception)
-		{
-			roblox_path = "";
-		}
-	}
-
 	private void AutoLaunchOpt_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
-		update_roblox_path();
-		if (roblox_path == "")
-		{
-			DisplayNotification("ROBLOX Player is not installed.");
-			return;
-		}
 		AutoLaunchEnabled = !AutoLaunchEnabled;
 		if (AutoLaunchEnabled)
 		{
@@ -1829,38 +1835,13 @@ public partial class MainWindow : Window, IComponentConnector
 
 	private void enable_auto_launch()
 	{
-		File.Exists(Path.Combine(roblox_path, "XInput1_4.dll"));
-		auto_launch_mutex = new Mutex(initiallyOwned: false, "RJ_AL_MTX0001");
+		DisplayNotification("Auto Launch always enabled, press attach");
 	}
 
 	private void disable_auto_launch()
 	{
-		if (auto_launch_mutex != null)
-		{
-			auto_launch_mutex.Dispose();
-		}
-		bool createdNew;
-		Mutex mutex = new Mutex(initiallyOwned: true, "RJ_AL_MTX0001", out createdNew);
-		if (createdNew)
-		{
-			mutex.ReleaseMutex();
-		}
-		mutex.Dispose();
-		string path = Path.Combine(roblox_path, "XInput1_4.dll");
-		if (File.Exists(path))
-		{
-			try
-			{
-				File.Delete(path);
-				svg3.Visibility = Visibility.Hidden;
-			}
-			catch (Exception)
-			{
-				svg3.Visibility = Visibility.Visible;
-				MessageBox.Show("Please close Roblox before trying to disable auto launch.", "Krnl", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-			}
-		}
-	}
+        DisplayNotification("Auto Launch always enabled, press attach");
+    }
 
 	private void SearchInput_LostFocus(object sender, RoutedEventArgs e)
 	{

@@ -654,6 +654,7 @@
                                 </Path.Data>
                             </Path>
                         </Canvas>
+                        <Image Margin="4,10,22,10" Source="/images/applogo.png" Stretch="Fill" RenderTransformOrigin="0.409,-0.34"/>
                     </Grid>
                     <Grid Name="injectOpt" HorizontalAlignment="Left" Width="48" Background="#FF2C2C2C" Margin="52,0,0,0" MouseLeftButtonUp="injectOpt_MouseLeftButtonUp">
                         <FrameworkElement.Triggers>
@@ -754,7 +755,9 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <Grid Name="menuOpt1" HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" Width="48" Background="#FF2C2C2C"/>
+                        <Grid Name="menuOpt1" HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" Width="48" Background="#FF2C2C2C">
+                            <Image Margin="0,6,0,10" Source="/app.ico" Stretch="Fill" HorizontalAlignment="Center" Width="28"/>
+                        </Grid>
                         <Label Name="Introduct" Content="Welcome, King!" HorizontalAlignment="Left" Margin="48,12,0,0" VerticalAlignment="Top" Padding="0,5,5,5" Width="113" Foreground="#FFD5D5D5" FontFamily="/KrnlUI;component/Fonts/#Inter" />
                         <Border Name="SearchBorder" BorderBrush="#003E3E3E" BorderThickness="1" HorizontalAlignment="Right" Height="40" Margin="0,4,16,0" VerticalAlignment="Top" Width="107" CornerRadius="6" MouseEnter="SearchBorder_MouseEnter" MouseLeave="SearchBorder_MouseLeave">
                             <FrameworkElement.Triggers>
