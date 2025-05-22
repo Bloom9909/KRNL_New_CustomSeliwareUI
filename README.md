@@ -1,7 +1,7 @@
 # KRNL_New_CustomSeliwareUI
 By meowbloom2
 
-# Update 1.0.1 
+# Update v1.0.1 
 
 Changed:
 
@@ -15,7 +15,7 @@ Fixed:
 Thanks for your support!If you find some errors, dm meowbloom2 on discord
 
 
-# Update v 1.0.2
+# Update v1.0.2
 
 Changed:
 
@@ -24,6 +24,21 @@ Changed:
 Fixed:
 
 [/] UI not showing on launch
+
+
+# Update v1.1.0
+
+Changed: 
+
+[-] Removed UnlockFPS (Useles, execute setfpscap(999) )
+
+[+] Added Roblox Auto Launch 
+
+Fixes:
+
+[/] Fixed icons not showing
+
+[/] Fixed Auto Attach 
 
 # Thanks for your support!If you find any errors, please DM meowbloom2 on discord 
 
