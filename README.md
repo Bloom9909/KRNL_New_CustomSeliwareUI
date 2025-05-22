@@ -30,7 +30,7 @@ Fixed:
 
 Changed: 
 
-[-] Removed UnlockFPS (Useles, execute setfpscap(999) )
+[-] Removed UnlockFPS (Useless, execute setfpscap(999) )
 
 [+] Added Roblox Auto Launch 
 
